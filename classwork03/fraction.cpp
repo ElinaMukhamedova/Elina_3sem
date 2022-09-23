@@ -10,13 +10,35 @@
 
 class Fraction {
 public:
-    friend std::ostream& operator<<(std::ostream& out, const Fraction& obj);  // Оператор вывода << "числитель знаминатель"
-    friend std::istream& operator>>(std::istream& is, Fraction& obj);  // Оператор ввода >> числитель >> знаминатель
+    friend std::ostream& operator<<(std::ostream& out, const Fraction& obj);
+    friend std::istream& operator>>(std::istream& is, Fraction& obj);
     
-    //Fraction& operator+=(const Fraction& other);
-    //Fraction& operator-=(const Fraction& other);
-    //Fraction& operator*=(const Fraction& other);
-    //
+    Fraction& operator+=(const Fraction& other) {
+        if ((this->denominator) == (other.denominator))
+            this->numerator += other.numerator;
+        else {
+            this->numerator = (this->numerator) * (other.denominator) + (this->denominator) * (other.numerator);
+            this->denominator = (this->denominator) * (other.denominator);
+        }
+        return *this;
+    }
+    
+    Fraction& operator-=(const Fraction& other) {
+        if ((this->denominator) == (other.denominator))
+            this->numerator -= other.numerator;
+        else {
+            this->numerator = (this->numerator) * (other.denominator) - (this->denominator) * (other.numerator);
+            this->denominator = (this->denominator) * (other.denominator);
+        }
+        return *this;
+    }
+    
+    Fraction& operator*=(const Fraction& other) {
+        this->numerator *= other.numerator;
+        this->denominator *= other.denominator;
+        return *this;
+    }
+    
     //friend Fraction operator+(const Fraction& other) const;
     //friend Fraction operator-(const Fraction& other) const;
     //friend Fraction operator*(const Fraction& other) const;
@@ -210,7 +232,10 @@ int main() {
     
     std::cout << seventh;
     
-    Fraction eight = Fraction(0);
-    std::cin >> eight;
-    std::cout << eight;
+    Fraction eighth = Fraction(0);
+    std::cin >> eighth;
+    std::cout << eighth;
+    
+    seventh *= eighth;
+    seventh.printFraction();
 }
