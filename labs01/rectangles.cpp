@@ -6,6 +6,7 @@
 //
 
 #include <iostream>
+#include <string>
 
 class Point {
 public:
@@ -47,22 +48,28 @@ public:
         Point miny_point = this->vertex.miny(rha.vertex);
         int x = minx_point.x;
         int y = miny_point.y;
+        Point new_vertex = Point(x, y);
+        Rectangle new_rectangle = Rectangle(new_vertex);
+        return new_rectangle;
     }
     Point getVertex() {
         return vertex;
+    }
+    void print() const {
+        vertex.print();
     }
 private:
     Point vertex;
 };
 
 int main() {
-    Point A = Point(2, 3);
-    Point B = Point(4, 5);
+    Point A = Point(5, 6);
+    Point B = Point(7, 4);
     Rectangle first = Rectangle(A);
     Rectangle second = Rectangle(B);
-    Rectangle third = first + second;
-    first.getVertex().print();
-    second.getVertex().print();
-    third.getVertex().print();
+    Rectangle third = first * second;
+    first.print();
+    second.print();
+    third.print();
     return 0;
 }
