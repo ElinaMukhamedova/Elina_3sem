@@ -39,14 +39,45 @@ public:
         return *this;
     }
     
-    //friend Fraction operator+(const Fraction& other) const;
-    //friend Fraction operator-(const Fraction& other) const;
-    //friend Fraction operator*(const Fraction& other) const;
-    //
-    //Fraction& operator++();
-    //Fraction operator++(int);
-    //Fraction& operator--();
-    //Fraction operator--(int);
+    Fraction operator+(const Fraction& other) const{
+        Fraction sum = *this;
+        sum += other;
+        return sum;
+    }
+    
+    Fraction operator-(const Fraction& other) const {
+        Fraction dif = *this;
+        dif -= other;
+        return dif;
+    }
+    
+    Fraction operator*(const Fraction& other) const {
+        Fraction mult = *this;
+        mult *= other;
+        return mult;
+    }
+    
+    Fraction& operator++() {
+          return *this += 1;
+        }
+        
+    Fraction operator++(int k) {
+        for (int i = 0; i < k; ++i)
+            ++(*this);
+        Fraction res = *this;
+        return res;
+    }
+    
+    Fraction& operator--() {
+        return *this -= 1;
+    }
+    
+    Fraction operator--(int k) {
+        for (int i = 0; i < k; ++i)
+            --(*this);
+        Fraction res = *this;
+        return res;
+    }
     
     Fraction(int numerator, int denominator) : numerator(numerator), denominator(denominator) { }
     Fraction(int numerator) : Fraction(numerator, 1) {}
@@ -238,4 +269,15 @@ int main() {
     
     seventh *= eighth;
     seventh.printFraction();
+    
+    eighth++;
+    std::cout << eighth;
+    
+    Fraction ninth = eighth.operator--(5);
+    std::cout << ninth;
+    
+    Fraction tenth = eighth.operator++(3);
+    std::cout << tenth;
+    
+    std::cout << ninth + tenth << ninth - tenth << ninth * tenth;
 }
