@@ -52,7 +52,7 @@ public:
         Rectangle new_rectangle = Rectangle(new_vertex);
         return new_rectangle;
     }
-    Point getVertex() {
+    Point getVertex() const {
         return vertex;
     }
     void print() const {
@@ -71,5 +71,16 @@ int main() {
     first.print();
     second.print();
     third.print();
+    
+    std::string expression;
+    std::cin >> string;
+    int x = 0; int y = 0;
+    for (size_t i = 0; i < expression.length(); ++i) {
+        //logic
+    }
+    std::string expression;
+    while (std::cin >> expression) {
+        std::cout << expression << "/t";
+    }
     return 0;
 }
