@@ -63,24 +63,28 @@ private:
 };
 
 int main() {
-    Point A = Point(5, 6);
-    Point B = Point(7, 4);
-    Rectangle first = Rectangle(A);
-    Rectangle second = Rectangle(B);
-    Rectangle third = first * second;
-    first.print();
-    second.print();
-    third.print();
+    //Point A = Point(5, 6);
+    //Point B = Point(7, 4);
+    //Rectangle first = Rectangle(A);
+    //Rectangle second = Rectangle(B);
+    //Rectangle third = first * second;
+    //first.print();
+    //second.print();
+    //third.print();
     
     std::string expression;
     std::cin >> string;
     int x = 0; int y = 0;
+    Rectangle first = Rectangle();
+    bool f1 = false;
+    Rectangle second = Rectangle();
+    bool f2 = false;
     for (size_t i = 0; i < expression.length(); ++i) {
-        //logic
+        
     }
-    std::string expression;
-    while (std::cin >> expression) {
-        std::cout << expression << "/t";
-    }
+    //std::string expression;
+    //    while (std::cin >> expression) {
+    //        std::cout << expression << "/t";
+    //    }
     return 0;
 }
