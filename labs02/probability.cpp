@@ -12,7 +12,7 @@ using State = int;
 
 struct Base {
     virtual bool contains() = 0;
-}
+};
 
 class DiscreteState : Base{
 private:
@@ -79,6 +79,10 @@ public:
 };
 
 int main() {
-    
+    DiscreteState d = DiscreteState(0);
+    SegmentState s = SegmentState(0 ,100);
+    ProbabilityTest pt = ProbabilityTest(-1000,1000);
+    std::cout << pt.test(d, 20000, 1) << std::endl;
+    std::cout << pt.test(s, 20000, 1) << std::endl;
     return 0;
 };
