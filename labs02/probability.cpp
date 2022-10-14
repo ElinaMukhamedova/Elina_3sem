@@ -11,10 +11,10 @@
 using State = int;
 
 struct Base {
-    virtual bool contains() = 0;
+    virtual bool contains(State s) const = 0;
 };
 
-class DiscreteState : Base{
+struct DiscreteState : Base{
 private:
     State const s0;
 public:
@@ -24,7 +24,7 @@ public:
     }
 };
 
-class SegmentState : Base{
+struct SegmentState : Base{
 private:
     State const begin_s0, end_s0;
 public:
@@ -34,7 +34,7 @@ public:
     }
 };
 
-class Unite : Base {
+struct Unite : Base {
 private:
     std::vector<SegmentState> storage;
 public:
@@ -48,7 +48,7 @@ public:
     }
 };
 
-class Intersect : Base {
+struct Intersect : Base {
 private:
     std :: vector<SegmentState> storage;
 public:
@@ -62,7 +62,7 @@ public:
     }
 };
 
-class ProbabilityTest {
+struct ProbabilityTest {
 private:
     State const E_min, E_max;
 public:
