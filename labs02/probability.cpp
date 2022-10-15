@@ -69,7 +69,7 @@ private:
     State const E_min, E_max;
 public:
     ProbabilityTest(State E_min, State E_max) : E_min(E_min) , E_max(E_max) {}
-    float test(Base& system, unsigned test_count, unsigned seed) const {
+    float test(const Base& system, unsigned test_count, unsigned seed) const {
         std :: default_random_engine reng (seed);
         std :: uniform_int_distribution<int> dstr(E_min, E_max);
         unsigned good = 0;
