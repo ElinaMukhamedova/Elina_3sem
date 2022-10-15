@@ -38,6 +38,7 @@ struct Unite : Base {
 private:
     std::vector<SegmentState> storage;
 public:
+    Unite(std::vector<SegmentState> storage) : storage(storage) {}
     virtual bool contains(State s) const override {
         int n = storage.size();
         bool f = false;
@@ -52,6 +53,7 @@ struct Intersect : Base {
 private:
     std :: vector<SegmentState> storage;
 public:
+    Intersect(std::vector<SegmentState> storage) : storage(storage) {}
     virtual bool contains(State s) const override {
         int n = storage.size();
         bool f = true;
@@ -88,6 +90,17 @@ int main() {
     for (int test_count = 1; test_count <= 1000; ++test_count) {
         ProbabilityTest pt1 = ProbabilityTest(-1000, 1000);
         std::cout << pt.test(s, test_count, seed) << std::endl;
+        ++seed;
+    }
+    SegmentState s1 = SegmentState(-100, 25);
+    SegmentState s2 = SegmentState(50, 100);
+    std::vector<SegmentState> v = {s1, s2};
+    Unite s12 = Unite(v);
+    std::cout << std::endl;
+    seed = 1;
+    for (int test_count = 1; test_count <= 1000; ++test_count) {
+        ProbabilityTest pt1 = ProbabilityTest(-1000, 1000);
+        std::cout << pt.test(s12, test_count, seed) << std::endl;
         ++seed;
     }
     return 0;
