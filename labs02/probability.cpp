@@ -80,9 +80,15 @@ public:
 
 int main() {
     DiscreteState d = DiscreteState(0);
-    SegmentState s = SegmentState(0 ,100);
-    ProbabilityTest pt = ProbabilityTest(-1000,1000);
+    SegmentState s = SegmentState(-100, 100);
+    ProbabilityTest pt = ProbabilityTest(-1000, 1000);
     std::cout << pt.test(d, 20000, 1) << std::endl;
     std::cout << pt.test(s, 20000, 1) << std::endl;
+    int seed = 1;
+    for (int test_count = 1; test_count <= 1000; ++test_count) {
+        ProbabilityTest pt1 = ProbabilityTest(-1000, 1000);
+        std::cout << pt.test(s, test_count, seed) << std::endl;
+        ++seed;
+    }
     return 0;
 };
