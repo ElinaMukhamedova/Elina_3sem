@@ -97,7 +97,7 @@ int main() {
     std::vector<SegmentState> v = {s1, s2};
     Unite s12 = Unite(v);
     std::cout << std::endl;
-    seed = 1;
+    seed = 1001;
     for (int test_count = 1; test_count <= 1000; ++test_count) {
         ProbabilityTest pt1 = ProbabilityTest(-1000, 1000);
         std::cout << pt.test(s12, test_count, seed) << std::endl;
