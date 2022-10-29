@@ -33,7 +33,7 @@ void printArray(T array[], int size) {
 }
 
 template <typename T>
-int partition(T array[], int low, int high, Comporator<T> comp) {
+int partition(T array[], int low, int high, Comparator<T> comp) {
   T pivot = array[high];
   int i = (low - 1);
   for (int j = low; j < high; j++) {
@@ -47,9 +47,9 @@ int partition(T array[], int low, int high, Comporator<T> comp) {
 }
 
 template<typename T>
-void quickSort(T array[], int low, int high, ) {
+void quickSort(T array[], int low, int high, Comparator<T> comp) {
   if (low < high) {
-    int pi = partition(array, low, high);
+    int pi = partition(array, low, high, comp);
     quickSort(array, low, pi - 1);
     quickSort(array, pi + 1, high);
   }
