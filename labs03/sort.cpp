@@ -37,7 +37,7 @@ int partition(T array[], int low, int high, Comparator<T> comp) {
   T pivot = array[high];
   int i = (low - 1);
   for (int j = low; j < high; j++) {
-    if (comp(array[j], pivot)) {
+    if (Comparator.operator(array[j], pivot)) {
       i++;
       swap(&array[i], &array[j]);
     }
