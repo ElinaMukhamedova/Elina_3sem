@@ -56,11 +56,16 @@ void quickSort(T array[], int low, int high, const Comparator<T> & comp) {
 }
 
 int main() {
-  int data[] = {13, 17, 7, 11, 21, 23, -5};
-  int n = sizeof(data) / sizeof(data[0]);
-  printArray(data, n);
+    int data[] = {13, 17, 7, 11, 21, 23, -5};
+    int n = sizeof(data) / sizeof(data[0]);
+    printArray(data, n);
     IntComparator comp;
-  quickSort<int>(data, 0, n - 1, comp);
-  printArray<int>(data, n);
+    quickSort<int>(data, 0, n - 1, comp);
+    printArray<int>(data, n);
+    int data1[] = {1,3,-17, -13, 117};
+    n = sizeof(data1) / sizeof(data1[0]);
+    printArray(data1, n);
+    quickSort<int>(data1, 0, n - 1, comp);
+    printArray<int>(data1, n);
 }
 
