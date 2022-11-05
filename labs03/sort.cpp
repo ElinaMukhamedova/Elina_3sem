@@ -33,11 +33,11 @@ void printArray(T array[], int size) {
 }
 
 template <typename T>
-int partition(T array[], int low, int high, Comparator<T> comp) {
+int partition(T array[], int low, int high, const Comparator<T> & comp) {
   T pivot = array[high];
   int i = (low - 1);
   for (int j = low; j < high; j++) {
-    if (Comparator.operator(array[j], pivot)) {
+    if (comp(array[j], pivot)) {
       i++;
       swap(&array[i], &array[j]);
     }
@@ -47,11 +47,11 @@ int partition(T array[], int low, int high, Comparator<T> comp) {
 }
 
 template<typename T>
-void quickSort(T array[], int low, int high, Comparator<T> comp) {
+void quickSort(T array[], int low, int high, const Comparator<T> & comp) {
   if (low < high) {
     int pi = partition(array, low, high, comp);
-    quickSort(array, low, pi - 1);
-    quickSort(array, pi + 1, high);
+    quickSort(array, low, pi - 1, comp);
+    quickSort(array, pi + 1, high, comp);
   }
 }
 
@@ -59,7 +59,8 @@ int main() {
   int data[] = {13, 17, 7, 11, 21, 23, -5};
   int n = sizeof(data) / sizeof(data[0]);
   printArray(data, n);
-  quickSort<int>(data, 0, n - 1);
+    IntComparator comp;
+  quickSort<int>(data, 0, n - 1, comp);
   printArray<int>(data, n);
 }
 
