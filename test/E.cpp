@@ -43,8 +43,10 @@ public:
     virtual bool isAlive() {
         return alive;
     }
+    virtual ~Kwama();
 };
 
+Kwama::~Kwama() { }
 
 class Worker : public Kwama {
     unsigned int cuttle;
