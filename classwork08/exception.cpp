@@ -9,7 +9,9 @@
 #include <cmath>
 
 struct base_exception {
-    void f();
+    virtual void f() {
+        std::cout << "base";
+    }
 };
 
 struct math_exception : base_exception{
