@@ -19,9 +19,10 @@ struct Grid final {
     using value_type = T;
     using size_type = unsigned;
 
-    template<class U = T>
-    Grid(const T& val, typename std::enable_if<dim == 2, U>::type* = 0): Grid(1, 1, val) {}
-
+    Grid(const T& val): Grid(1, 1, val) {
+            static_assert(dim == 2);
+        }
+    
     template<class... Args>
     Grid(size_type x, Args... args): data(static_cast<Grid<T, dim - 1>*>(operator new(sizeof(Grid<T, dim - 1>) * x))),
                                     sz(x) {
