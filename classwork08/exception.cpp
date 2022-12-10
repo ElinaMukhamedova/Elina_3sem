@@ -9,15 +9,19 @@
 #include <cmath>
 
 struct base_exception {
-    virtual void f();
+    virtual void what();
 };
 
-struct math_exception : final base_exception {
-
+struct math_exception : base_exception{
+    void what() {
+        std::cout << "cought math_exception";
+    }
 };
 
-struct invalid_argument : final base_exception {
-
+struct invalid_argument : base_exception{
+    void what() {
+        std::cout << "cought invalid_argument";
+    }
 };
 
 double inverse(double x) {
@@ -35,13 +39,13 @@ double root(double x) {
 int main() {
     try {
         inverse(0.);
-    } catch (math_exception exc) {
-        std::cout >> 'cought math_exception in main\n';
+    } catch (math_exception &exc) {
+        exc.what();
     }
     try {
         root(-13.);
-    } catch (invalid_argument exc) {
-        std::cout >> 'cought invalid_argument in main\n';
+    } catch (invalid_argument &exc) {
+        exc.what();
     }
     return 0;
 }
