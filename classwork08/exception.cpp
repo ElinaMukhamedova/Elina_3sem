@@ -9,7 +9,7 @@
 #include <cmath>
 
 struct base_exception {
-    virtual void what();
+    void f();
 };
 
 struct math_exception : base_exception{
