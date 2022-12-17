@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip> //setw() //showpos()
+#include <cmath>
 
 
 template <typename T>
@@ -89,6 +90,21 @@ public:
         Quaternion product = *this;
         product *= other;
         return product;
+    }
+    
+    double getAngle() {
+        T s2 = norm();
+        if (s2 == 1) {
+            return 2 * acos(A);
+        }
+    }
+    Quaternion getVector() {
+        T s2 = norm();
+        if (s2 == 1) {
+            double theta = getAngle();
+            double k = sin(theta / 2);
+            Quaternion<double> vector = Quaternion<double> (0, B / k, C / k, D / k);
+        }
     }
 };
 
