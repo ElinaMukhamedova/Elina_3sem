@@ -51,6 +51,45 @@ public:
         if (s2 != 0)
             return Quaternion(A / s2, -B / s2, -C / s2, -D / s2);
     }
+    
+    Quaternion& operator+=(const Quaternion& other) {
+        this->A = (this->A) + (other.A);
+        this->B = (this->B) + (other.B);
+        this->C = (this->C) + (other.C);
+        this->D = (this->D) + (other.D);
+        return *this;
+    }
+    Quaternion operator+(const Quaternion& other) const{
+        Quaternion sum = *this;
+        sum += other;
+        return sum;
+    }
+    
+    Quaternion& operator-=(const Quaternion& other) {
+        this->A = (this->A) - (other.A);
+        this->B = (this->B) - (other.B);
+        this->C = (this->C) - (other.C);
+        this->D = (this->D) - (other.D);
+        return *this;
+    }
+    Quaternion operator-(const Quaternion& other) const{
+        Quaternion diff = *this;
+        diff -= other;
+        return diff;
+    }
+    
+    Quaternion& operator*=(const Quaternion& other) {
+        this->A = (this->A) * (other.A) - (this->B) * (other.B) - (this->C) * (other.C) - (this->D) * (other.D);
+        this->B = (this->A) * (other.B) + (this->B) * (other.A) + (this->C) * (other.D) - (this->D) * (other.C);
+        this->C = (this->A) * (other.C) - (this->B) * (other.D) + (this->C) * (other.A) + (this->D) * (other.B);
+        this->D = (this->A) * (other.D) + (this->B) * (other.C) - (this->C) * (other.B) + (this->D) * (other.A);
+        return *this;
+    }
+    Quaternion operator*(const Quaternion& other) const{
+        Quaternion product = *this;
+        product *= other;
+        return product;
+    }
 };
 
 int main() {
